@@ -110,7 +110,27 @@ section {
   font-weight: 700;
   color: transparent;
   -webkit-text-stroke: 0.7px var(--main-color);
+  background-image: linear-gradient(var(--main-color), var(--main-color));
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-position: -33rem 0;
+  animation: homeBgText 6s linear infinite;
+  animation-delay: 2s;
 }
+
+.home-content .text-animate h3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  border-right: 2px solid var(--main-color);
+  z-index: -1;
+  animation: homeCursorText 6s linear infinite;
+  animation-delay: 2s;
+}
+
 
 .home-content p {
   font-size: 1.6rem;
@@ -286,6 +306,7 @@ span {
   border-bottom: 0.2rem solid var(--second-bg-color);
   border-left: 0.2rem solid var(--main-color);
   border-right: 0.2rem solid var(--main-color);
+  animation: aboutSpinner 8s linear infinite;
 }
 
 .about-content {
@@ -490,20 +511,33 @@ span {
   width: 40%;
 }
 
+.skills-column:nth-child(1) .skills-content .progress:nth-child(5) .bar span {
+  width: 40%;
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(6) .bar span {
+  width: 65%;
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(7) .bar span {
+  width: 60%;
+}
+
+
 .skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span {
   width: 80%;
 }
 
 .skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span {
-  width: 90%;
+  width: 85%;
 }
 
 .skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span {
-  width: 90%;
+  width: 55%;
 }
 
 .skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span {
-  width: 90%;
+  width: 85%;
 }
 
 /* CONTACTO */
@@ -684,22 +718,21 @@ span {
     left: 0;
     transition-delay: 0s;
   }
-  .navbar .active-nav{
+  .navbar .active-nav {
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
     background: var(--bg-color);
-    border-top: .1rem solid rgba(0,0,0,.2);
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
     z-index: -1;
-    transition: .25s ease;
+    transition: 0.25s ease;
     transition-delay: 0s;
   }
-  .navbar.active .active-nav{
-    transition-delay: .25s;
+  .navbar.active .active-nav {
+    transition-delay: 0.25s;
     left: 0;
-
   }
 
   .navbar a {
@@ -707,29 +740,52 @@ span {
     font-size: 2rem;
     margin: 3rem 0;
     transform: translateX(-20rem);
-    transition: .25s ease;
+    transition: 0.25s ease;
     transition-delay: 0s;
   }
 
   .navbar.active a {
     transform: translateX(0);
-    transition-delay: .25s;
+    transition-delay: 0.25s;
   }
 
-  .home-imgHover{
+  .home-imgHover {
     pointer-events: none;
     background: var(--bg-color);
-    opacity: .9;
+    opacity: 0.9;
   }
+}
 
 
+/* KEYFRAMES ANIMATION */
+@keyframes homeBgText {
+  0%,10%,100% {
+    background-position: -33rem 0;
+  }
+  65%,85% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes homeCursorText {
+  0%,10%,100% {
+    width: 0;
+  }
+  65%,
+  78%
+  ,85% {
+    width: 100%;
+    opacity: 1;
+  }
+  75%,
+  81% {
+    opacity: 0;
+  }
+}
 
 
-
-
-
-
-
-
-
+@keyframes aboutSpinner{
+  100%{
+    transform:translate(-50%, -50%) rotate(360deg)
+  }
 }
